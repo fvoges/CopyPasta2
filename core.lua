@@ -221,8 +221,8 @@ end
 function addon:SetupVersion()
    local svnrev = 0
    local files = vars.svnrev
-   files["X-Build"] = tonumber((C_AddOns.GetAddonMetadata(addonName, "X-Build") or ""):match("%d+"))
-   files["X-Revision"] = tonumber((C_AddOns.GetAddonMetadata(addonName, "X-Revision") or ""):match("%d+"))
+   files["X-Build"] = tonumber((C_AddOns.GetAddOnMetadata(addonName, "X-Build") or ""):match("%d+"))
+   files["X-Revision"] = tonumber((C_AddOns.GetAddOnMetadata(addonName, "X-Revision") or ""):match("%d+"))
    for _,v in pairs(files) do -- determine highest file revision
      if v and v > svnrev then
        svnrev = v
@@ -230,8 +230,8 @@ function addon:SetupVersion()
    end
    addon.revision = svnrev
 
-   files["X-Curse-Packaged-Version"] = C_AddOns.GetAddonMetadata(addonName, "X-Curse-Packaged-Version")
-   files["Version"] = C_AddOns.GetAddonMetadata(addonName, "Version")
+   files["X-Curse-Packaged-Version"] = C_AddOns.GetAddOnMetadata(addonName, "X-Curse-Packaged-Version")
+   files["Version"] = C_AddOns.GetAddOnMetadata(addonName, "Version")
    addon.version = files["X-Curse-Packaged-Version"] or files["Version"] or "@"
    if string.find(addon.version, "@") then -- dev copy uses "@.project-version.@"
       addon.version = "r"..svnrev
@@ -267,10 +267,11 @@ end
 
 function addon:Config()
   if optionsFrame then
-    if ( InterfaceOptionsFrame:IsShown() ) then
-      InterfaceOptionsFrame:Hide();
+    if ( optionsFrame:IsShown() ) then
+      optionsFrame:Hide()
+      HideUIPanel(SettingsPanel);
     else
-      InterfaceOptionsFrame_OpenToCategory(optionsFrame)
+      Settings.OpenToCategory(addonName, true)
     end
   end
 end
