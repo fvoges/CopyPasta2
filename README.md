@@ -1,4 +1,11 @@
 # CopyPasta2
+
+> **NOTE:** This is a fork of the addon. It incorporates some fixes from a pull request in the original repository, and updates to the TOC so that WoW doesn't complain about being out of date.
+>
+> I'm not an addon developer, if you find a bug, submit a pull request, and I'll review it and merge it. But don't expect me to fix any bugs/issues.
+>
+> I will ignore all complains.
+
 [Tukui Project Page](https://www.tukui.org/addons.php?id=186)
 
 [Nuaik's YouTube Channel](https://www.youtube.com/channel/UCMvK4RUJtojPBaKND8DULFw)
