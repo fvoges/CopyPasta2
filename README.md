@@ -1,14 +1,32 @@
 # CopyPasta2
 
-> **NOTE:** This is a fork of the addon. It incorporates some fixes from a pull request in the original repository, and updates to the TOC so that WoW doesn't complain about being out of date.
->
-> I'm not an addon developer, if you find a bug, submit a pull request, and I'll review it and merge it. But don't expect me to fix any bugs/issues.
->
-> I will ignore all complains.
+> **Fork Info:** This is a community-maintained fork that keeps the addon working with current WoW versions. The original authors seem to have moved on, so I'm keeping it updated for everyone who still uses it. Bug fixes and improvements via pull requests are always welcome!
 
-[Tukui Project Page](https://www.tukui.org/addons.php?id=186)
+## Installation
 
-[Nuaik's YouTube Channel](https://www.youtube.com/channel/UCMvK4RUJtojPBaKND8DULFw)
+**Download:** Get the current version from [Wago](https://addons.wago.io/addons/copypasta2) or [GitHub Releases](https://github.com/fvoges/CopyPasta2/releases)
+
+**Install:** 
+1. Download and extract to your `World of Warcraft\_retail_\Interface\AddOns` folder
+2. Restart WoW
+3. Access via minimap button, keybind, or `/paste show`
+
+**Compatibility:** Works with WoW 11.0.2+ (Interface 110200)
+
+## Features
+
+![CopyPasta2 Interface](Release/Screenshot.PNG)
+
+- **Multi-line pasting** - No more 255-character limit or stripped newlines!
+- **Channel selection** - Paste to Say, Guild, Party, Raid, or execute as slash commands
+- **Smart line splitting** - Long messages automatically split across multiple lines
+- **Minimap integration** - Quick access via minimap button
+- **Full configuration** - Customize via `/paste config`
+- **Chat addon compatible** - Works with all major chat addons
+
+## Historical Links
+
+[Original Tukui Page](https://www.tukui.org/addons.php?id=186) | [Nuaik's YouTube Channel](https://www.youtube.com/channel/UCMvK4RUJtojPBaKND8DULFw)
 
 CopyPasta is a small utility that enables multi-line/unlimited-length pasting of text or commands into WoW. This is a fork of CopyPasta which itself is a fork of Paste by the authors; idlenexusgaming & oscarucb who are both missing in action. Many people have attempted to reach out to the original authors but there has been no response from either. Due to the usefulness and popularity of his addon, it was necessary to fork his project and make it compatible with 9.x.  CopyPasta2 is essentially identical to paste but with its libraries updated for use with Shadowlands.  This addon will be discontinued should oscarucb or idlenexusgaming return from their hiatus to update paste/copypasta.
 
