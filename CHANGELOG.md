@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.22] - 2025-01-03
+
+### BREAKING CHANGES
+
+* WoW 11.2.0 deprecated SendChatMessage. All chat message outputs migrated to C_ChatInfo.SendChatMessage for WoW 11.2.5 compatibility. Affected channels: SAY, YELL, PARTY, RAID, INSTANCE_CHAT, GUILD, OFFICER, WHISPER
+
+### Bug Fixes
+
+* **chat:** replace deprecated SendChatMessage with C_ChatInfo API ([66801a4](https://github.com/fvoges/CopyPasta2/commit/66801a4))
+
+### Maintenance
+
+* **release:** add release automation and update for WoW 11.2.5 ([a7d76f6](https://github.com/fvoges/CopyPasta2/commit/a7d76f6))
+  - Update Interface version 110200 -> 110205 (WoW 11.2.5)
+  - Add Taskfile.yml for automated releases with conventional-changelog
+  - Add .clrc for changelog configuration
+  - Add .pkgmeta to exclude dev files from packaged releases
+  - Replace manual changelog with automated generation
+
 ## [1.0.21] - 2024-12-27
 
 ### Changed
