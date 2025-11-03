@@ -488,20 +488,20 @@ function addon:CreateWindow()
 end
 
 addon.wherefn = {
-  [CHAT_MSG_SAY] = function(str) SendChatMessage(str, "SAY") end,
-  [CHAT_MSG_YELL] = function(str) SendChatMessage(str, "YELL") end,
-  [CHAT_MSG_PARTY] = function(str) SendChatMessage(str, "PARTY") end,
-  [CHAT_MSG_RAID] = function(str) SendChatMessage(str, "RAID") end,
-  [INSTANCE_CHAT] = function(str) SendChatMessage(str, "INSTANCE_CHAT") end,
-  [CHAT_MSG_GUILD] = function(str) SendChatMessage(str, "GUILD") end,
-  [CHAT_MSG_OFFICER] = function(str) SendChatMessage(str, "OFFICER") end,
-  [CHAT_MSG_WHISPER_INFORM] = function(str) 
+  [CHAT_MSG_SAY] = function(str) C_ChatInfo.SendChatMessage(str, "SAY") end,
+  [CHAT_MSG_YELL] = function(str) C_ChatInfo.SendChatMessage(str, "YELL") end,
+  [CHAT_MSG_PARTY] = function(str) C_ChatInfo.SendChatMessage(str, "PARTY") end,
+  [CHAT_MSG_RAID] = function(str) C_ChatInfo.SendChatMessage(str, "RAID") end,
+  [INSTANCE_CHAT] = function(str) C_ChatInfo.SendChatMessage(str, "INSTANCE_CHAT") end,
+  [CHAT_MSG_GUILD] = function(str) C_ChatInfo.SendChatMessage(str, "GUILD") end,
+  [CHAT_MSG_OFFICER] = function(str) C_ChatInfo.SendChatMessage(str, "OFFICER") end,
+  [CHAT_MSG_WHISPER_INFORM] = function(str)
      local t = settings.whispertarget
      if not t then
        chatMsg(L["You must select a whisper target!"])
        return
      end
-     SendChatMessage(str, "WHISPER", nil, t) 
+     C_ChatInfo.SendChatMessage(str, "WHISPER", nil, t)
   end,
   [BN_WHISPER] = function(str) 
      local t = settings.whispertarget
