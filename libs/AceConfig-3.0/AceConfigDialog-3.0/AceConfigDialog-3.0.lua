@@ -1962,6 +1962,40 @@ local function ClearBlizPanel(widget, event)
 	AceConfigDialog.frame:SetScript("OnUpdate", RefreshOnUpdate)
 end
 
+local function RegisterBlizCategory(BlizOptions, appName, key, group, name, parent)
+	local frame = group.frame
+	if not Settings or not Settings.RegisterCanvasLayoutCategory then
+		InterfaceOptions_AddCategory(frame)
+		return
+	end
+
+	local categoryName = name or appName
+	local categoryMap = BlizOptions[appName].categories
+	if not categoryMap then
+		categoryMap = {}
+		BlizOptions[appName].categories = categoryMap
+	end
+
+	local category
+	if parent and Settings.RegisterCanvasLayoutSubcategory then
+		local parentCategory = categoryMap[parent]
+		if parentCategory then
+			category = Settings.RegisterCanvasLayoutSubcategory(parentCategory, frame, categoryName, categoryName)
+		end
+	end
+
+	if category then
+		frame.parent = nil
+	else
+		category = Settings.RegisterCanvasLayoutCategory(frame, categoryName, categoryName)
+		Settings.RegisterAddOnCategory(category)
+	end
+
+	frame.category = category
+	categoryMap[key] = category
+	categoryMap[categoryName] = category
+end
+
 --- Add an option table into the Blizzard Interface Options panel.
 -- You can optionally supply a descriptive name to use and a parent frame to use,
 -- as well as a path in the options table.\\
@@ -2007,7 +2041,7 @@ function AceConfigDialog:AddToBlizOptions(appName, name, parent, ...)
 		end
 		group:SetCallback("OnShow", FeedToBlizPanel)
 		group:SetCallback("OnHide", ClearBlizPanel)
-		InterfaceOptions_AddCategory(group.frame)
+		RegisterBlizCategory(BlizOptions, appName, key, group, name, parent)
 		return group.frame
 	else
 		error(("%s has already been added to the Blizzard Options Window with the given path"):format(appName), 2)

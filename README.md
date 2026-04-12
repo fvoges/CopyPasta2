@@ -11,7 +11,7 @@
 2. Restart WoW
 3. Access via minimap button, keybind, or `/paste show`
 
-**Compatibility:** Works with WoW 11.0.2+ (Interface 110200)
+**Compatibility:** Works with WoW 12.0.1+ (Interface 120001)
 
 ## Features
 

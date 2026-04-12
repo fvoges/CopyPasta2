@@ -10,7 +10,7 @@ local tostring, pairs = tostring, pairs
 
 -- WoW APIs
 local PlaySound = PlaySound
-local GetCursorInfo, ClearCursor, GetSpellInfo = GetCursorInfo, ClearCursor, GetSpellInfo
+local GetCursorInfo, ClearCursor = GetCursorInfo, ClearCursor
 local CreateFrame, UIParent = CreateFrame, UIParent
 local _G = _G
 
@@ -78,6 +78,19 @@ local function EditBox_OnEnterPressed(frame)
 	end
 end
 
+local function GetSpellName(spellID, fallbackName)
+	if C_Spell and C_Spell.GetSpellInfo then
+		local spellInfo = C_Spell.GetSpellInfo(spellID)
+		if spellInfo and spellInfo.name then
+			return spellInfo.name
+		end
+	elseif _G.GetSpellInfo then
+		return _G.GetSpellInfo(spellID)
+	end
+
+	return fallbackName
+end
+
 local function EditBox_OnReceiveDrag(frame)
 	local self = frame.obj
 	local type, id, info = GetCursorInfo()
@@ -85,7 +98,7 @@ local function EditBox_OnReceiveDrag(frame)
 	if type == "item" then
 		name = info
 	elseif type == "spell" then
-		name = GetSpellInfo(id, info)
+		name = GetSpellName(id, info)
 	elseif type == "macro" then
 		name = GetMacroInfo(id)
 	end
