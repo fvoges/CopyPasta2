@@ -1,16 +1,12 @@
-## [1.0.23](https://github.com/fvoges/CopyPasta2/compare/1.0.22...1.0.23) (2026-04-12)
+# CopyPasta2 Changelog
 
+All notable changes to this project will be documented in this file.
+
+## [1.0.23](https://github.com/fvoges/CopyPasta2/compare/1.0.22...1.0.23) (2026-04-12)
 
 ### Bug Fixes
 
 * **compat:** update settings support for WoW 12.0.1 ([3d0f551](https://github.com/fvoges/CopyPasta2/commit/3d0f5519338b2c1a56df2c0bbc8627872df70ba5))
-* **release:** generate versioned changelog output ([87a6c45](https://github.com/fvoges/CopyPasta2/commit/87a6c456d5461c9e94c65ab43b8c613ec7631b07))
-
-
-
-# CopyPasta2 Changelog
-
-All notable changes to this project will be documented in this file.
 
 ## [1.0.22] - 2025-01-03
 
