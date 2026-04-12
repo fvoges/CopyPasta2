@@ -250,7 +250,9 @@ function addon:OnInitialize()
   optionsFrame.default = function()
        for k,v in pairs(defaults.profile) do settings[k] = table_clone(v) end
        addon:RefreshConfig()
-       if InterfaceOptionsFrame:IsShown() then
+       local interfaceOptionsFrame = _G.InterfaceOptionsFrame
+       local settingsPanel = _G.SettingsPanel
+       if (interfaceOptionsFrame and interfaceOptionsFrame:IsShown()) or (settingsPanel and settingsPanel:IsShown()) then
          addon:Config(); addon:Config()
        end
   end
@@ -269,9 +271,21 @@ function addon:Config()
   if optionsFrame then
     if ( optionsFrame:IsShown() ) then
       optionsFrame:Hide()
-      HideUIPanel(SettingsPanel);
+      if SettingsPanel then
+        HideUIPanel(SettingsPanel)
+      end
     else
-      Settings.OpenToCategory(addonName, true)
+      if Settings and Settings.OpenToCategory then
+        local category = optionsFrame.category
+        local categoryID = category and ((category.GetID and category:GetID()) or category.ID)
+        if categoryID then
+          Settings.OpenToCategory(categoryID)
+        else
+          Settings.OpenToCategory(addonName, true)
+        end
+      elseif InterfaceOptionsFrame_OpenToCategory then
+        InterfaceOptionsFrame_OpenToCategory(optionsFrame)
+      end
     end
   end
 end
@@ -659,4 +673,3 @@ function addon:setEscapeHandler(widget, fn)
   widget.frame:EnableKeyboard(true)
   widget.frame:SetPropagateKeyboardInput(true)
 end
-

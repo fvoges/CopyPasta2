@@ -6,7 +6,7 @@ if not AceGUI or (AceGUI:GetWidgetVersion(Type) or 0) >= Version then return end
 local pairs = pairs
 
 -- WoW APIs
-local GetCursorInfo, GetSpellInfo, ClearCursor = GetCursorInfo, GetSpellInfo, ClearCursor
+local GetCursorInfo, ClearCursor = GetCursorInfo, ClearCursor
 local CreateFrame, UIParent = CreateFrame, UIParent
 local _G = _G
 
@@ -103,10 +103,23 @@ local function OnMouseUp(self)                                                  
 	self:SetCursorPosition(self:GetNumLetters())
 end
 
+local function GetSpellName(spellID, fallbackName)
+	if C_Spell and C_Spell.GetSpellInfo then
+		local spellInfo = C_Spell.GetSpellInfo(spellID)
+		if spellInfo and spellInfo.name then
+			return spellInfo.name
+		end
+	elseif _G.GetSpellInfo then
+		return _G.GetSpellInfo(spellID)
+	end
+
+	return fallbackName
+end
+
 local function OnReceiveDrag(self)                                               -- EditBox / ScrollFrame
 	local type, id, info = GetCursorInfo()
 	if type == "spell" then
-		info = GetSpellInfo(id, info)
+		info = GetSpellName(id, info)
 	elseif type ~= "item" then
 		return
 	end
